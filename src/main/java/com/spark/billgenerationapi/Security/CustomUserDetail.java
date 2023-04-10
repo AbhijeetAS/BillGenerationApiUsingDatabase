@@ -14,42 +14,33 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CustomUserDetail implements UserDetails {
-    private final String username;
-    private final String password;
-//    private final Set<SimpleGrantedAuthority> grantedAuthorities;
+    private String username;
+    private String password;
+    private Set<SimpleGrantedAuthority> grantedAuthorities;
 
 
     public CustomUserDetail(User user) {
         username=user.getUserId();
         password=user.getPassword();
-//        grantedAuthorities= user.getRole().getAllAuthorities();
+        grantedAuthorities= user.getRole().getAllAuthorities();
     }
 
 
 
-
-
-
-    private User user;
-
-//    public CustomUserDetail(User user) {
-//        this.user = user;
-//    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-          return getAuthorities();
-
+        System.out.println(grantedAuthorities);
+          return grantedAuthorities;
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return user.getUserId();
+        return username;
     }
 
     @Override

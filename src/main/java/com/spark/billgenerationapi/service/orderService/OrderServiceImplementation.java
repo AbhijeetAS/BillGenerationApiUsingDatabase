@@ -59,7 +59,7 @@ public class OrderServiceImplementation implements OrderServiceInterface {
         Date dayStart=simpleDateFormat.parse(date);
         Date dayEnd=simpleDateFormat.parse(date);
         dayEnd.setHours(23);
-        dayEnd.setMinutes(60);
+        dayEnd.setMinutes(59);
         dayEnd.setSeconds(60);
         return this.orderRepository.findAllByDateBetween(dayStart,dayEnd);
     }

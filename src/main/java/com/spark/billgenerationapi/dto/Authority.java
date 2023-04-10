@@ -2,10 +2,11 @@ package com.spark.billgenerationapi.dto;
 
 public enum Authority {
 
-    READ_USER("read:user"),
-    WRITE_USER("write:user"),
+    GET_EARN("get:earn"),
+    WRITE_EARN("write:earn"),
     READ_ORDER("read:order"),
-    WRITE_ORDER("write:order");
+    WRITE_ORDER("write:order"),
+    WRITE_USER("write:user");
 
     private String permission;
 

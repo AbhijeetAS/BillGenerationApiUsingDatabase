@@ -23,6 +23,7 @@ public class CustomerController {
     //check the previous order of same person
 
     @GetMapping("/{customerId}")
+    @PreAuthorize("hasAuthority('read:order')")
     public List<Order> orderHistory(@PathVariable String customerId)
     {
         return this.orderService.orderHistory(customerId);

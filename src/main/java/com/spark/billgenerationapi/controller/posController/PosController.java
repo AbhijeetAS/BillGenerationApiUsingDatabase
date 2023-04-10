@@ -6,6 +6,7 @@ import com.spark.billgenerationapi.service.BillGenerate.Generate;
 import com.spark.billgenerationapi.service.BillGenerate.GenerateBill;
 import com.spark.billgenerationapi.service.orderService.OrderServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,6 +29,7 @@ public class PosController {
     private GenerateBill generateBill;
    //here we generate bill on orderId
     @GetMapping("/{orderId}")
+    @PreAuthorize("hasAuthority('read:order')")
     public Generate getGeneratedBill(@PathVariable("orderId") int orderId)
     {
         return this.generateBill.generateBill(orderId);
